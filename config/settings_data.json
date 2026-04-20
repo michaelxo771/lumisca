@@ -1,0 +1,22 @@
+{
+  "current": {
+    "color_primary": "#C8102E",
+    "color_gold": "#C9A84C",
+    "color_dark": "#0A0A0A",
+    "color_light": "#F9F7F4",
+    "color_text": "#1A1A1A",
+    "font_heading": "cormorant_garamond_n4",
+    "font_body": "inter_n4",
+    "announcement_bar_enabled": true,
+    "announcement_bar_text": "🔴 Free UK Delivery On All Orders | 60-Day Money Back Guarantee",
+    "announcement_bar_bg": "#0A0A0A",
+    "announcement_bar_text_color": "#F9F7F4",
+    "logo_width": 140,
+    "footer_copyright": "© 2026 Lumisca. All rights reserved.",
+    "exit_popup_enabled": true,
+    "exit_popup_heading": "Wait — Get 10% Off Your First Order",
+    "exit_popup_subtext": "Join thousands of UK customers on their light therapy journey. Enter your email for 10% off.",
+    "exit_popup_discount_code": "LUMISCA10"
+  },
+  "presets": {}
+}

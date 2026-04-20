@@ -1,0 +1,151 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Lumisca",
+    "theme_version": "1.0.0",
+    "theme_author": "Lumisca",
+    "theme_documentation_url": "https://lumisca.com",
+    "theme_support_url": "https://lumisca.com/pages/contact"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary colour",
+        "default": "#C8102E"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Gold accent",
+        "default": "#C9A84C"
+      },
+      {
+        "type": "color",
+        "id": "color_dark",
+        "label": "Dark background",
+        "default": "#0A0A0A"
+      },
+      {
+        "type": "color",
+        "id": "color_light",
+        "label": "Light background",
+        "default": "#F9F7F4"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Body text",
+        "default": "#1A1A1A"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading font",
+        "default": "cormorant_garamond_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "inter_n4"
+      }
+    ]
+  },
+  {
+    "name": "Announcement Bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "announcement_bar_enabled",
+        "label": "Show announcement bar",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "announcement_bar_text",
+        "label": "Announcement text",
+        "default": "🔴 Free UK Delivery On All Orders | 60-Day Money Back Guarantee"
+      },
+      {
+        "type": "color",
+        "id": "announcement_bar_bg",
+        "label": "Background colour",
+        "default": "#0A0A0A"
+      },
+      {
+        "type": "color",
+        "id": "announcement_bar_text_color",
+        "label": "Text colour",
+        "default": "#F9F7F4"
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Logo width",
+        "default": 140
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "text",
+        "id": "footer_copyright",
+        "label": "Copyright text",
+        "default": "© 2026 Lumisca. All rights reserved."
+      }
+    ]
+  },
+  {
+    "name": "Exit Intent Popup",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "exit_popup_enabled",
+        "label": "Enable exit intent popup",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "exit_popup_heading",
+        "label": "Popup heading",
+        "default": "Wait — Get 10% Off Your First Order"
+      },
+      {
+        "type": "text",
+        "id": "exit_popup_subtext",
+        "label": "Popup subtext",
+        "default": "Join thousands of UK customers on their light therapy journey. Enter your email for 10% off."
+      },
+      {
+        "type": "text",
+        "id": "exit_popup_discount_code",
+        "label": "Discount code",
+        "default": "LUMISCA10"
+      }
+    ]
+  }
+]

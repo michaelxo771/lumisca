@@ -1,0 +1,77 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter store using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "admin_link_html": "Are you the store owner? <a href=\"/admin\" target=\"_blank\">Log in here</a>"
+    },
+    "meta": {
+      "tags": "Tagged with",
+      "types": "Types"
+    },
+    "breadcrumbs": {
+      "home": "Home"
+    },
+    "social": {
+      "links": {
+        "instagram": "Instagram",
+        "tiktok": "TikTok"
+      }
+    }
+  },
+  "sections": {
+    "header": {
+      "links": {
+        "cart_count": "Cart ({{ count }})"
+      }
+    },
+    "footer": {
+      "links": {
+        "title": "Quick Links"
+      }
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add To Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "quantity": {
+        "label": "Quantity"
+      },
+      "share": "Share"
+    },
+    "facets": {
+      "clear_all": "Clear all",
+      "filters": "Filters"
+    },
+    "general": {
+      "sale_badge_html": "Sale",
+      "rrp_label": "RRP"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "empty": "Your cart is currently empty.",
+      "continue_browsing_html": "<a href=\"/\">Continue browsing</a>",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "update": "Update cart",
+      "remove": "Remove"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "close": "Close",
+    "open_menu": "Open menu",
+    "loading": "Loading"
+  },
+  "blogs": {
+    "article": {
+      "read_more": "Read more"
+    }
+  }
+}
