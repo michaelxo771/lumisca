@@ -1,13 +1,1 @@
-{
-  "sections": {
-    "not-found": {
-      "type": "not-found",
-      "settings": {}
-    },
-    "footer": {
-      "type": "footer",
-      "settings": {}
-    }
-  },
-  "order": ["not-found", "footer"]
-}
+{"sections":{"not-found":{"type":"hero","settings":{"heading":"Page Not Found","subheading":"The page you are looking for doesn't exist or has been moved.","badge":"404","cta_text":"Go Back Home","cta_url":"/","cta2_text":"Shop The Collection","cta2_url":"/collections/all"}},"footer":{"type":"footer","settings":{}}},"order":["not-found","footer"]}
