@@ -1,0 +1,9 @@
+{% if section.settings.enabled %}
+<div class="announcement-bar">
+  <div class="announcement-text">{{ section.settings.message_1 }}</div>
+</div>
+{% endif %}
+
+{% schema %}
+{"name":"Announcement Bar","settings":[{"type":"checkbox","id":"enabled","label":"Show bar","default":true},{"type":"text","id":"message_1","label":"Message 1","default":"🔴 Free UK Delivery On All Orders"},{"type":"text","id":"message_2","label":"Message 2","default":"60-Day Money Back Guarantee"},{"type":"text","id":"message_3","label":"Message 3","default":"Join 10,000+ Lumisca Customers"}]}
+{% endschema %}
