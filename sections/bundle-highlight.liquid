@@ -1,0 +1,67 @@
+<section class="section" style="background:var(--color-black);color:white;">
+  <div class="container" style="text-align:center;">
+    <div class="badge badge-gold" style="margin-bottom:16px;">Best Value</div>
+    <h2 style="color:white;margin-bottom:16px;">{{ section.settings.heading }}</h2>
+    <p style="color:rgba(249,247,244,0.7);margin-bottom:48px;max-width:600px;margin-left:auto;margin-right:auto;">{{ section.settings.subheading }}</p>
+    <div class="grid grid-3" style="margin-bottom:48px;">
+      {% for block in section.blocks %}
+        <div style="padding:24px;background:rgba(255,255,255,0.05);border-radius:12px;border:1px solid rgba(255,255,255,0.1);" data-animate {{ block.shopify_attributes }}>
+          <p style="font-size:0.8rem;opacity:0.5;text-decoration:line-through;margin-bottom:4px;">{{ block.settings.individual_price }}</p>
+          <p style="font-weight:600;color:white;margin-bottom:4px;">{{ block.settings.product_name }}</p>
+          <p style="font-size:0.85rem;opacity:0.6;">{{ block.settings.benefit }}</p>
+        </div>
+      {% endfor %}
+    </div>
+    <div style="margin-bottom:32px;">
+      <p style="font-size:0.9rem;opacity:0.5;text-decoration:line-through;margin-bottom:8px;">Individual total: £299.97</p>
+      <p style="font-size:3rem;font-weight:700;font-family:var(--font-heading);color:var(--color-gold);">£124.99</p>
+      <p style="color:var(--color-gold);font-weight:600;margin-bottom:8px;">You Save £174.98 — 58% Off</p>
+      <div style="display:flex;align-items:center;justify-content:center;margin:16px 0;gap:4px;">
+        <span style="opacity:0.6;margin-right:8px;font-size:0.9rem;">Sale ends in:</span>
+        <div style="text-align:center;">
+          <div style="background:rgba(255,255,255,0.1);border-radius:6px;padding:8px 12px;font-size:1.4rem;font-weight:700;min-width:48px;" data-countdown>00:00:00</div>
+        </div>
+      </div>
+      <p style="font-size:0.8rem;opacity:0.4;margin-top:8px;">Only <span data-stock-count>24</span> bundles remaining at this price</p>
+    </div>
+    <a href="{{ section.settings.cta_url }}" class="btn btn-primary btn-lg">{{ section.settings.cta_text }}</a>
+    <div style="display:flex;justify-content:center;gap:24px;margin-top:24px;opacity:0.6;font-size:0.85rem;">
+      <span>✓ Free UK Delivery</span>
+      <span>✓ 60-Day Money Back</span>
+      <span>✓ Secure Checkout</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle Highlight",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get Everything. Save £174.98." },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Your complete at-home light therapy clinic." },
+    { "type": "text", "id": "cta_text", "label": "CTA text", "default": "Shop The Bundle — £124.99" },
+    { "type": "url", "id": "cta_url", "label": "CTA URL" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "text", "id": "product_name", "label": "Product name" },
+        { "type": "text", "id": "individual_price", "label": "Individual price" },
+        { "type": "text", "id": "benefit", "label": "Benefit" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Highlight",
+      "blocks": [
+        { "type": "product", "settings": { "product_name": "Pro Hair Growth Cap", "individual_price": "£64.99", "benefit": "Hair regrowth technology" } },
+        { "type": "product", "settings": { "product_name": "Glow Face Mask", "individual_price": "£54.99", "benefit": "Anti-ageing light therapy" } },
+        { "type": "product", "settings": { "product_name": "Rest Eye Mask", "individual_price": "£29.99", "benefit": "Sleep and eye relief" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
