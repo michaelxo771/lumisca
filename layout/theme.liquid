@@ -40,6 +40,7 @@
 
     <!-- Theme CSS -->
     {{ 'lumisca.css' | asset_url | stylesheet_tag }}
+    {{ 'lumisca-conversion.css' | asset_url | stylesheet_tag }}
 
     <!-- CSS Variables injected from theme settings -->
     <style>
@@ -218,6 +219,7 @@
 
     <!-- Main Theme JS -->
     <script src="{{ 'lumisca.js' | asset_url }}" defer></script>
+    <script src="{{ 'lumisca-conversion.js' | asset_url }}" defer></script>
 
     <!-- Inline boot data for JS -->
     <script>
