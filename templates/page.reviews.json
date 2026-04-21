@@ -1,13 +1,1 @@
-{
-  "sections": {
-    "reviews-page": {
-      "type": "reviews-page",
-      "settings": {}
-    },
-    "footer": {
-      "type": "footer",
-      "settings": {}
-    }
-  },
-  "order": ["reviews-page", "footer"]
-}
+{"sections":{"reviews":{"type":"reviews-page","settings":{}},"trust-bar":{"type":"trust-bar","settings":{}},"footer":{"type":"footer","settings":{}}},"order":["reviews","trust-bar","footer"]}
