@@ -1,13 +1,1 @@
-{
-  "sections": {
-    "science-page": {
-      "type": "science-page",
-      "settings": {}
-    },
-    "footer": {
-      "type": "footer",
-      "settings": {}
-    }
-  },
-  "order": ["science-page", "footer"]
-}
+{"sections":{"science":{"type":"science-page","settings":{}},"trust-bar":{"type":"trust-bar","settings":{}},"footer":{"type":"footer","settings":{}}},"order":["science","trust-bar","footer"]}
