@@ -1,0 +1,9 @@
+{% unless request.design_mode %}
+<div class="cookie-banner" id="cookie-banner" style="display:none;" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <p>We use cookies to improve your experience and for marketing purposes. <a href="/pages/privacy" style="color:var(--color-gold);">Learn more</a></p>
+  <div class="cookie-buttons">
+    <button id="cookie-accept" class="btn btn-primary cookie-accept" style="padding:8px 20px;font-size:0.85rem;">Accept All</button>
+    <button id="cookie-reject" class="btn btn-secondary cookie-reject" style="padding:8px 20px;font-size:0.85rem;border-color:rgba(255,255,255,0.3);color:white;">Reject Non-Essential</button>
+  </div>
+</div>
+{% endunless %}
