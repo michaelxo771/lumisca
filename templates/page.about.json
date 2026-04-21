@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "about-page": {
+      "type": "about-page",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": ["about-page", "footer"]
+}

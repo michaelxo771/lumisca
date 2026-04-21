@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "reviews-page": {
+      "type": "reviews-page",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": ["reviews-page", "footer"]
+}

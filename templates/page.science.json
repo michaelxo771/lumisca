@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "science-page": {
+      "type": "science-page",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": ["science-page", "footer"]
+}
