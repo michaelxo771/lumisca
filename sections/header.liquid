@@ -1,0 +1,42 @@
+<header class="header" id="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">LUMI<span>S</span>CA</a>
+    <nav>
+      <ul class="nav">
+        <li><a href="/collections/all">Shop</a></li>
+        <li><a href="/pages/science">The Science</a></li>
+        <li><a href="/pages/reviews">Reviews</a></li>
+        <li><a href="/pages/about">About</a></li>
+        <li><a href="/pages/faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="header-icons">
+      <a href="/search" aria-label="Search">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </a>
+      <a href="/cart" class="cart-icon" data-cart-open aria-label="Cart">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" data-cart-count>{{ cart.item_count }}</span>
+      </a>
+      <button class="hamburger" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobile-nav-drawer">
+    <button class="mobile-nav__close" id="mobile-menu-close" aria-label="Close menu">✕</button>
+    <ul>
+      <li><a href="/collections/all">Shop</a></li>
+      <li><a href="/pages/science">The Science</a></li>
+      <li><a href="/pages/reviews">Reviews</a></li>
+      <li><a href="/pages/about">About</a></li>
+      <li><a href="/pages/faq">FAQ</a></li>
+      <li><a href="/cart">Cart ({{ cart.item_count }})</a></li>
+    </ul>
+  </div>
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+</header>
+
+{% schema %}
+{"name":"Header","settings":[]}
+{% endschema %}
