@@ -1,0 +1,53 @@
+<section style="padding:60px 0;background:var(--color-black);color:white;">
+  <div class="container">
+    <h2 class="section-title" style="color:white;text-align:center;">{{ section.settings.heading }}</h2>
+    <p class="section-subtitle" style="color:rgba(249,247,244,0.6);text-align:center;max-width:600px;margin:12px auto 0;">{{ section.settings.subheading }}</p>
+    <div class="grid grid-4" style="margin-top:48px;position:relative;">
+      {% for block in section.blocks %}
+        <div style="text-align:center;padding:32px 20px;background:rgba(255,255,255,0.05);border-radius:16px;border:1px solid rgba(200,16,46,0.3);position:relative;" data-animate {{ block.shopify_attributes }}>
+          {% unless forloop.last %}
+            <div style="display:none;" class="timeline-connector"></div>
+          {% endunless %}
+          <div style="width:48px;height:48px;background:var(--color-red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-weight:700;font-size:0.85rem;color:white;">{{ forloop.index }}</div>
+          <div style="font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--color-red);margin-bottom:8px;font-weight:600;">{{ block.settings.week }}</div>
+          <h3 style="color:white;margin-bottom:12px;font-size:1.05rem;font-family:var(--font-heading);">{{ block.settings.title }}</h3>
+          <p style="font-size:0.85rem;color:rgba(249,247,244,0.6);line-height:1.6;">{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+    <p style="text-align:center;margin-top:32px;font-size:0.8rem;color:rgba(249,247,244,0.4);font-style:italic;">{{ section.settings.disclaimer }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Results Timeline",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your Results Timeline" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "What to expect with consistent daily use" },
+    { "type": "text", "id": "disclaimer", "label": "Disclaimer", "default": "Results may vary. Based on consistent daily use as directed. Individual results may vary." }
+  ],
+  "blocks": [
+    {
+      "type": "week",
+      "name": "Week",
+      "settings": [
+        { "type": "text", "id": "week", "label": "Week label" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "description", "label": "Description" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Results Timeline",
+      "blocks": [
+        { "type": "week", "settings": { "week": "Week 1", "title": "Getting Started", "description": "Your scalp adjusts to the treatment. Some customers notice increased scalp circulation and warmth." } },
+        { "type": "week", "settings": { "week": "Week 4", "title": "Early Signs", "description": "Many customers begin to notice reduced hair shedding and improvements in scalp health." } },
+        { "type": "week", "settings": { "week": "Week 8", "title": "Visible Progress", "description": "New hair growth becomes visible for most customers. Hair appears thicker and stronger." } },
+        { "type": "week", "settings": { "week": "Week 12", "title": "Significant Results", "description": "Most customers see significant improvement in hair density and coverage at the 12 week mark." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
