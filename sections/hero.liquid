@@ -1,0 +1,47 @@
+<section class="hero section section--dark" style="background:var(--color-black);color:var(--color-white);">
+  <div class="container">
+    <div class="grid grid-2" style="align-items:center;min-height:80vh;">
+      <div class="hero-content" data-animate>
+        {% if section.settings.badge != blank %}
+          <div class="badge badge-red" style="margin-bottom:16px;">{{ section.settings.badge }}</div>
+        {% endif %}
+        <h1 style="color:var(--color-white);">{{ section.settings.heading }}</h1>
+        <p style="color:rgba(249,247,244,0.8);font-size:1.2rem;margin:24px 0 40px;">{{ section.settings.subheading }}</p>
+        <div class="hero-buttons" style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="{{ section.settings.cta_url }}" class="btn btn-primary btn-lg">{{ section.settings.cta_text }}</a>
+          <a href="{{ section.settings.cta2_url }}" class="btn btn-ghost btn-lg">{{ section.settings.cta2_text }}</a>
+        </div>
+        <div style="margin-top:40px;display:flex;gap:32px;flex-wrap:wrap;">
+          <div style="color:rgba(249,247,244,0.7);font-size:0.9rem;"><strong style="color:white;font-size:1.5rem;display:block;">10,000+</strong>Happy Customers</div>
+          <div style="color:rgba(249,247,244,0.7);font-size:0.9rem;"><strong style="color:white;font-size:1.5rem;display:block;">4.9★</strong>Average Rating</div>
+          <div style="color:rgba(249,247,244,0.7);font-size:0.9rem;"><strong style="color:white;font-size:1.5rem;display:block;">60-Day</strong>Money Back</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;" data-animate>
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 600 | image_tag: loading: 'eager', alt: section.settings.heading, style: 'border-radius:16px;max-width:500px;width:100%;' }}
+        {% else %}
+          <div style="width:500px;height:500px;background:rgba(200,16,46,0.1);border-radius:16px;display:flex;align-items:center;justify-content:center;border:2px dashed rgba(200,16,46,0.3);max-width:100%;"><p style="color:rgba(249,247,244,0.5);">Add hero image in theme editor</p></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "badge", "label": "Badge text", "default": "🔴 As Seen On TikTok" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your At-Home Light Therapy Clinic." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Clinically studied wavelengths. Professional results. From your sofa." },
+    { "type": "text", "id": "cta_text", "label": "Primary button text", "default": "Shop The Collection" },
+    { "type": "url", "id": "cta_url", "label": "Primary button URL" },
+    { "type": "text", "id": "cta2_text", "label": "Secondary button text", "default": "See The Science" },
+    { "type": "url", "id": "cta2_url", "label": "Secondary button URL" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}
