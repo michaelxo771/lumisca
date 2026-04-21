@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0">
+    <meta name="theme-color" content="#0A0A0A">
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {%- if settings.meta_robots_noindex -%}
+      <meta name="robots" content="noindex, nofollow">
+    {%- endif -%}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if localization.available_languages.size > 1 -%}
+      {%- for language in localization.available_languages -%}
+        <link rel="alternate" hreflang="{{ language.iso_code }}" href="{{ request.origin }}{{ request.path }}">
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged &ldquo;{{ current_tags | join: ', ' }}&rdquo;{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    {{ 'lumisca.css' | asset_url | stylesheet_tag }}
+
+    <!-- CSS Variables injected from theme settings -->
+    <style>
+      :root {
+        --color-primary: {{ settings.color_primary | default: '#C8102E' }};
+        --color-gold: {{ settings.color_gold | default: '#C9A84C' }};
+        --color-dark: {{ settings.color_dark | default: '#0A0A0A' }};
+        --color-light: {{ settings.color_light | default: '#F9F7F4' }};
+        --color-text: {{ settings.color_text | default: '#1A1A1A' }};
+        --font-heading: 'Playfair Display', Georgia, serif;
+        --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+        --free-shipping-threshold: {{ settings.free_shipping_threshold | default: 50 }};
+      }
+    </style>
+
+    <!-- GTM Head -->
+    {%- if settings.gtm_container_id != blank -%}
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ settings.gtm_container_id }}');</script>
+    <!-- End Google Tag Manager -->
+    {%- endif -%}
+
+    <!-- GA4 -->
+    {%- if settings.ga4_measurement_id != blank -%}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings.ga4_measurement_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ settings.ga4_measurement_id }}', { 'anonymize_ip': true });
+    </script>
+    {%- endif -%}
+
+    <!-- Microsoft Clarity -->
+    {%- if settings.clarity_project_id != blank -%}
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "{{ settings.clarity_project_id }}");
+    </script>
+    {%- endif -%}
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lumisca",
+      "url": "{{ shop.url }}",
+      "logo": "{{ settings.logo | image_url: width: 200 }}",
+      "description": "UK's leading at-home red light therapy brand. Clinically studied devices for hair growth, skin rejuvenation and wellness.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@lumisca.com",
+        "contactType": "customer service",
+        "availableLanguage": "English",
+        "areaServed": "GB"
+      },
+      "sameAs": [
+        "{{ settings.instagram_url }}",
+        "{{ settings.tiktok_url }}"
+      ]
+    }
+    </script>
+
+    {%- if request.page_type == 'product' -%}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "{{ product.title | escape }}",
+      "description": "{{ product.description | strip_html | truncate: 200 | escape }}",
+      "brand": {
+        "@type": "Brand",
+        "name": "Lumisca"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "{{ product.price | money_without_currency }}",
+        "priceCurrency": "GBP",
+        "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+        "url": "{{ shop.url }}{{ product.url }}"
+      }
+      {%- if product.metafields.reviews.rating.value != blank -%}
+      ,"aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "{{ product.metafields.reviews.rating.value }}",
+        "reviewCount": "{{ product.metafields.reviews.rating_count.value }}"
+      }
+      {%- endif -%}
+    }
+    </script>
+    {%- endif -%}
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="template-{{ request.page_type }}{% if request.page_type == 'product' %} template-product{% endif %}" data-currency="GBP">
+
+    <!-- GTM Body noscript -->
+    {%- if settings.gtm_container_id != blank -%}
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ settings.gtm_container_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {%- endif -%}
+
+    <!-- GDPR Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none;">
+      <div class="cookie-banner__inner">
+        <div class="cookie-banner__text">
+          <p>We use cookies to personalise content, analyse our traffic and improve your experience. By clicking "Accept All", you consent to our use of cookies. <a href="/pages/privacy-policy">Learn more</a>.</p>
+        </div>
+        <div class="cookie-banner__actions">
+          <button id="cookie-reject" class="btn btn--ghost btn--sm">Reject Non-Essential</button>
+          <button id="cookie-accept" class="btn btn--primary btn--sm">Accept All</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skip to content -->
+    <a class="skip-to-content" href="#MainContent">Skip to content</a>
+
+    <!-- Announcement Bar -->
+    {%- section 'announcement-bar' -%}
+
+    <!-- Header -->
+    {%- section 'header' -%}
+
+    <!-- Page Content -->
+    <main id="MainContent" class="main-content" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    <!-- Footer -->
+    {%- section 'footer' -%}
+
+    <!-- Cart Drawer -->
+    {%- section 'cart-drawer' -%}
+
+    <!-- Exit Intent / Welcome Popup -->
+    {%- section 'popup' -%}
+
+    <!-- Recent Purchase Toast -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top" style="display:none;">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M10 4l6 6H4l6-6z" fill="currentColor"/>
+      </svg>
+    </button>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="cart-overlay" aria-hidden="true"></div>
+
+    <!-- Klaviyo -->
+    {%- if settings.klaviyo_public_api_key != blank -%}
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_public_api_key }}"></script>
+    {%- endif -%}
+
+    <!-- Meta Pixel (fires after cookie consent) -->
+    {%- if settings.meta_pixel_id != blank -%}
+    <script id="meta-pixel-script" type="text/plain" data-cookiecategory="marketing">
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '{{ settings.meta_pixel_id }}');
+      fbq('track', 'PageView');
+    </script>
+    {%- endif -%}
+
+    <!-- TikTok Pixel (fires after cookie consent) -->
+    {%- if settings.tiktok_pixel_id != blank -%}
+    <script id="tiktok-pixel-script" type="text/plain" data-cookiecategory="marketing">
+      !function (w, d, t) {
+        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+        ttq.load('{{ settings.tiktok_pixel_id }}');
+        ttq.page();
+      }(window, document, 'ttq');
+    </script>
+    {%- endif -%}
+
+    <!-- Main Theme JS -->
+    <script src="{{ 'lumisca.js' | asset_url }}" defer></script>
+
+    <!-- Inline boot data for JS -->
+    <script>
+      window.Lumisca = window.Lumisca || {};
+      window.Lumisca.cartCount = {{ cart.item_count }};
+      window.Lumisca.cartTotal = {{ cart.total_price }};
+      window.Lumisca.freeShippingThreshold = {{ settings.free_shipping_threshold | default: 5000 }};
+      window.Lumisca.currency = 'GBP';
+      window.Lumisca.shop = '{{ shop.permanent_domain }}';
+      window.Lumisca.routes = {
+        cart_url: '{{ routes.cart_url }}',
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_clear_url: '{{ routes.cart_clear_url }}',
+        search_url: '{{ routes.search_url }}'
+      };
+      window.Lumisca.exitPopupEnabled = {{ settings.exit_popup_enabled | default: true }};
+      window.Lumisca.welcomePopupEnabled = {{ settings.welcome_popup_enabled | default: true }};
+      window.Lumisca.exitPopupDiscount = '{{ settings.exit_popup_discount_code | default: "LUMISCA10" }}';
+    </script>
+
+  </body>
+</html>
