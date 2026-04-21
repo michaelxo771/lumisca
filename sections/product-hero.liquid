@@ -1,0 +1,104 @@
+<section style="padding:60px 0;">
+  <div class="container">
+    <div style="font-size:0.85rem;color:var(--color-grey-mid);margin-bottom:24px;">
+      <a href="/">Home</a> / <a href="/collections/all">Shop</a> / {{ product.title }}
+    </div>
+    <div class="grid grid-2" style="gap:64px;align-items:start;">
+
+      <!-- Gallery -->
+      <div id="product-gallery">
+        <div style="border-radius:16px;overflow:hidden;margin-bottom:16px;">
+          <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" id="product-main-image" style="width:100%;aspect-ratio:1;object-fit:cover;">
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+          {% for image in product.images limit: 4 %}
+            <img
+              src="{{ image | image_url: width: 120 }}"
+              alt="{{ product.title | escape }}"
+              class="product-thumb {% if forloop.first %}is-active{% endif %}"
+              data-src="{{ image | image_url: width: 600 }}"
+              loading="lazy"
+              style="border-radius:8px;cursor:pointer;aspect-ratio:1;object-fit:cover;border:2px solid {% if forloop.first %}var(--color-red){% else %}transparent{% endif %};">
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Product info -->
+      <div>
+        <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+          <div class="badge badge-red">As Seen On TikTok 🔴</div>
+          {% if product.compare_at_price > product.price %}
+            <div class="badge badge-gold">{{ product.compare_at_price | minus: product.price | money }} Off</div>
+          {% endif %}
+        </div>
+
+        <h1 style="margin-bottom:12px;">{{ product.title }}</h1>
+
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+          <div style="color:#f5a623;letter-spacing:2px;">★★★★★</div>
+          <span style="font-weight:600;">4.9</span>
+          <a href="#reviews" style="color:var(--color-grey-mid);font-size:0.9rem;">({{ product.metafields.reviews.rating_count.value | default: '247' }} reviews)</a>
+          <span style="color:var(--color-grey-mid);font-size:0.9rem;">·</span>
+          <span style="font-size:0.85rem;color:#2e7d32;font-weight:600;">✓ <span data-sold-count>47</span> sold today</span>
+        </div>
+
+        <p style="color:var(--color-grey-mid);margin-bottom:20px;line-height:1.7;">{{ product.description | strip_html | truncate: 180 }}</p>
+
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;">
+          <span style="font-size:2rem;font-weight:700;color:var(--color-black);">{{ product.price | money }}</span>
+          {% if product.compare_at_price > product.price %}
+            <span style="font-size:1.2rem;color:var(--color-grey-mid);text-decoration:line-through;">{{ product.compare_at_price | money }}</span>
+            <span class="badge badge-red">Save {{ product.compare_at_price | minus: product.price | money }}</span>
+          {% endif %}
+        </div>
+
+        <p style="font-size:0.8rem;color:var(--color-grey-mid);margin-bottom:20px;">Free UK delivery &middot; 60-day money back guarantee &middot; In stock — ships today</p>
+
+        <div style="background:#fff8e1;border-left:3px solid var(--color-red);padding:10px 14px;border-radius:0 6px 6px 0;margin-bottom:12px;font-size:0.88rem;">
+          ⚠️ Only <strong><span data-stock-count>23</span> units remaining</strong> — order soon
+        </div>
+
+        <div style="margin-bottom:20px;font-size:0.88rem;color:var(--color-grey-mid);">
+          🔥 <strong><span data-visitors>18</span> people</strong> viewing this right now
+        </div>
+
+        <{% form 'product', product, data-atc-form: '' %}>
+          <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;" data-qty-wrapper>
+            <label style="font-weight:600;font-size:0.9rem;">Qty:</label>
+            <div style="display:flex;align-items:center;border:1px solid var(--color-grey-light);border-radius:8px;overflow:hidden;">
+              <button type="button" data-qty-change="down" style="padding:8px 16px;background:none;border:none;cursor:pointer;font-size:1.1rem;">−</button>
+              <input type="number" name="quantity" id="qty-input" data-qty-input class="qty-input" value="1" min="1" style="width:50px;text-align:center;border:none;padding:8px 0;font-size:1rem;">
+              <button type="button" data-qty-change="up" style="padding:8px 16px;background:none;border:none;cursor:pointer;font-size:1.1rem;">+</button>
+            </div>
+          </div>
+
+          <button type="submit" id="main-atc-btn" data-atc-btn class="btn btn-primary btn-full" style="margin-bottom:12px;font-size:1.1rem;padding:18px;">
+            Add To Cart — {{ product.price | money }}
+          </button>
+
+          {{ form | payment_button }}
+        {%- endform -%}
+
+        <div style="display:flex;justify-content:center;gap:12px;margin:16px 0;flex-wrap:wrap;opacity:0.7;">
+          <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Visa"><rect width="38" height="24" rx="4" fill="#1A1F71"/><text x="19" y="17" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif" font-weight="bold">VISA</text></svg>
+          <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Mastercard"><rect width="38" height="24" rx="4" fill="#252525"/><circle cx="14" cy="12" r="8" fill="#EB001B"/><circle cx="24" cy="12" r="8" fill="#F79E1B"/></svg>
+          <svg width="38" height="24" viewBox="0 0 38 24" aria-label="PayPal"><rect width="38" height="24" rx="4" fill="#F5F7FA"/><text x="19" y="17" text-anchor="middle" fill="#003087" font-size="9" font-family="sans-serif" font-weight="bold">PayPal</text></svg>
+          <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Klarna"><rect width="38" height="24" rx="4" fill="#FFB3C7"/><text x="19" y="17" text-anchor="middle" fill="#17120E" font-size="10" font-family="sans-serif" font-weight="bold">klarna</text></svg>
+          <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Apple Pay"><rect width="38" height="24" rx="4" fill="#000"/><text x="19" y="17" text-anchor="middle" fill="white" font-size="9" font-family="sans-serif"> Pay</text></svg>
+        </div>
+
+        {%- render 'trust-badges' -%}
+
+        <div data-delivery-cutoff style="margin-top:16px;padding:12px 16px;background:#f5f3f0;border-radius:8px;font-size:0.85rem;">
+          🚚 Order in the next <span id="delivery-countdown" style="font-weight:700;color:var(--color-red);">—</span> for delivery by <strong>{{ 'now' | date: '%s' | plus: 345600 | date: '%A, %d %b' }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{"name":"Product Hero","settings":[]}
+{% endschema %}
