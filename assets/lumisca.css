@@ -867,11 +867,10 @@ textarea { resize: vertical; min-height: 120px; }
 }
 
 /* ── Scroll Animations ──────────────────────────────────────── */
-[data-animate] {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity .55s ease, transform .55s ease;
-}
-[data-animate].is-visible { opacity: 1; transform: translateY(0); }
+/* Elements are visible by default — JS adds .will-animate before viewport entry */
+[data-animate] { transition: opacity .55s ease, transform .55s ease; }
+[data-animate].will-animate { opacity: 0; transform: translateY(24px); }
+[data-animate].is-visible { opacity: 1 !important; transform: translateY(0) !important; }
 
 /* ── Keyframes ──────────────────────────────────────────────── */
 @keyframes fadeIn {
