@@ -1,0 +1,79 @@
+<section style="padding:80px 0;">
+  <div class="container" style="max-width:800px;">
+    <h1 style="margin-bottom:48px;">Frequently Asked Questions</h1>
+    {% for block in section.blocks %}
+      {% if block.type == 'category' %}
+        <h2 style="margin-bottom:24px;margin-top:48px;padding-bottom:12px;border-bottom:2px solid var(--color-red);font-size:1.3rem;" {{ block.shopify_attributes }}>{{ block.settings.title }}</h2>
+      {% endif %}
+      {% if block.type == 'faq' %}
+        <div class="faq__item" {{ block.shopify_attributes }}>
+          <button class="faq__question" aria-expanded="false">
+            {{ block.settings.question }}
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__answer" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease;">
+            <div style="padding:16px 0 24px;">
+              <p>{{ block.settings.answer }}</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    <div style="margin-top:64px;padding:32px;background:#f5f3f0;border-radius:16px;text-align:center;">
+      <p style="font-weight:600;margin-bottom:8px;">Still have a question?</p>
+      <p style="color:var(--color-grey-mid);margin-bottom:20px;">Our team responds within 24 hours, Mon–Fri.</p>
+      <a href="/pages/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Page",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Category title" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Page",
+      "blocks": [
+        { "type": "category", "settings": { "title": "About The Products" } },
+        { "type": "faq", "settings": { "question": "What is red light therapy?", "answer": "Red light therapy uses specific wavelengths of red and near-infrared light to stimulate cellular processes. It is non-invasive, drug-free and has been the subject of extensive clinical research." } },
+        { "type": "faq", "settings": { "question": "Which Lumisca device is right for me?", "answer": "The Hair Growth Cap is designed for hair thinning and loss. The Glow Face Mask targets skin ageing, acne and dullness. The Rest Eye Mask helps with sleep, dry eyes and screen fatigue. The Complete Bundle includes all three." } },
+        { "type": "faq", "settings": { "question": "Can I use multiple devices at once?", "answer": "You can use multiple devices as part of your routine, though we recommend completing one session before starting another. Many customers use the hair cap in the morning and the face mask in the evening." } },
+        { "type": "category", "settings": { "title": "Safety & Suitability" } },
+        { "type": "faq", "settings": { "question": "Is red light therapy safe?", "answer": "Yes. Red light therapy is non-invasive and has an excellent safety profile in published research. Always follow the included instructions, avoid looking directly at the lights, and consult your doctor if you have a specific medical condition." } },
+        { "type": "faq", "settings": { "question": "Can I use this if I am pregnant?", "answer": "We recommend consulting your doctor before using any light therapy device during pregnancy." } },
+        { "type": "faq", "settings": { "question": "Is it suitable for sensitive skin?", "answer": "Yes. Our devices use light only and do not contact the skin directly. They are generally suitable for all skin types including sensitive skin." } },
+        { "type": "category", "settings": { "title": "Results & Expectations" } },
+        { "type": "faq", "settings": { "question": "How long before I see results?", "answer": "Hair regrowth results typically become visible between weeks 8–12 with consistent daily use. Skin improvements are often noticed sooner, from week 4. Sleep and eye mask benefits are typically noticed within the first few days." } },
+        { "type": "faq", "settings": { "question": "How often should I use it?", "answer": "We recommend daily use for best results. Each session is 20–25 minutes with an auto shutoff timer. Consistency is the most important factor in achieving results." } },
+        { "type": "category", "settings": { "title": "Shipping & Delivery" } },
+        { "type": "faq", "settings": { "question": "How long does UK delivery take?", "answer": "All orders are dispatched within 1–2 business days and delivered within 3–5 business days via tracked courier. You will receive a tracking email once dispatched." } },
+        { "type": "faq", "settings": { "question": "Is delivery really free?", "answer": "Yes. Free tracked delivery on every UK order, every time. No minimum spend." } },
+        { "type": "category", "settings": { "title": "Returns & Guarantee" } },
+        { "type": "faq", "settings": { "question": "What is your returns policy?", "answer": "We offer a 60-day money back guarantee on all products. If you are not completely satisfied for any reason, contact support@lumisca.com within 60 days of purchase and we will arrange a full refund." } },
+        { "type": "faq", "settings": { "question": "How do I start a return?", "answer": "Email support@lumisca.com with your order number and reason for return. We will respond within 24 hours with return instructions. Refunds are processed within 3–5 business days of receiving the return." } },
+        { "type": "category", "settings": { "title": "Payment & Orders" } },
+        { "type": "faq", "settings": { "question": "What payment methods do you accept?", "answer": "We accept all major credit and debit cards, PayPal, Apple Pay, Google Pay, Klarna and Clearpay. All payments are processed securely." } },
+        { "type": "faq", "settings": { "question": "Can I pay in instalments?", "answer": "Yes. We offer buy now pay later through Klarna and Clearpay at checkout. You can spread the cost interest-free." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
