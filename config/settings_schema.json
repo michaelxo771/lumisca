@@ -10,142 +10,103 @@
   {
     "name": "Colors",
     "settings": [
-      {
-        "type": "color",
-        "id": "color_primary",
-        "label": "Primary colour",
-        "default": "#C8102E"
-      },
-      {
-        "type": "color",
-        "id": "color_gold",
-        "label": "Gold accent",
-        "default": "#C9A84C"
-      },
-      {
-        "type": "color",
-        "id": "color_dark",
-        "label": "Dark background",
-        "default": "#0A0A0A"
-      },
-      {
-        "type": "color",
-        "id": "color_light",
-        "label": "Light background",
-        "default": "#F9F7F4"
-      },
-      {
-        "type": "color",
-        "id": "color_text",
-        "label": "Body text",
-        "default": "#1A1A1A"
-      }
+      { "type": "color", "id": "color_primary", "label": "Primary red", "default": "#C8102E" },
+      { "type": "color", "id": "color_gold", "label": "Gold accent", "default": "#C9A84C" },
+      { "type": "color", "id": "color_dark", "label": "Dark / black", "default": "#0A0A0A" },
+      { "type": "color", "id": "color_light", "label": "Light / white", "default": "#F9F7F4" },
+      { "type": "color", "id": "color_text", "label": "Body text", "default": "#1A1A1A" },
+      { "type": "color", "id": "color_text_muted", "label": "Muted text", "default": "#4A4A4A" },
+      { "type": "color", "id": "color_border", "label": "Border", "default": "#E8E6E3" }
     ]
   },
   {
     "name": "Typography",
     "settings": [
-      {
-        "type": "font_picker",
-        "id": "font_heading",
-        "label": "Heading font",
-        "default": "cormorant_garamond_n4"
-      },
-      {
-        "type": "font_picker",
-        "id": "font_body",
-        "label": "Body font",
-        "default": "inter_n4"
-      }
+      { "type": "font_picker", "id": "font_heading", "label": "Heading font", "default": "cormorant_garamond_n4" },
+      { "type": "font_picker", "id": "font_body", "label": "Body font", "default": "assistant_n4" },
+      { "type": "range", "id": "font_size_base", "label": "Base font size", "min": 14, "max": 18, "step": 1, "unit": "px", "default": 16 }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      { "type": "image_picker", "id": "favicon", "label": "Favicon image", "info": "16 x 16px .ico or .png recommended" }
+    ]
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo image" },
+      { "type": "range", "id": "logo_width", "label": "Logo width", "min": 60, "max": 300, "step": 10, "unit": "px", "default": 140 },
+      { "type": "text", "id": "logo_text", "label": "Logo text (if no image)", "default": "LUMISCA" }
     ]
   },
   {
     "name": "Announcement Bar",
     "settings": [
-      {
-        "type": "checkbox",
-        "id": "announcement_bar_enabled",
-        "label": "Show announcement bar",
-        "default": true
-      },
-      {
-        "type": "text",
-        "id": "announcement_bar_text",
-        "label": "Announcement text",
-        "default": "🔴 Free UK Delivery On All Orders | 60-Day Money Back Guarantee"
-      },
-      {
-        "type": "color",
-        "id": "announcement_bar_bg",
-        "label": "Background colour",
-        "default": "#0A0A0A"
-      },
-      {
-        "type": "color",
-        "id": "announcement_bar_text_color",
-        "label": "Text colour",
-        "default": "#F9F7F4"
-      }
+      { "type": "checkbox", "id": "announcement_bar_enabled", "label": "Show announcement bar", "default": true },
+      { "type": "text", "id": "announcement_bar_message_1", "label": "Message 1", "default": "🔴 Free UK Delivery On All Orders | 60-Day Money Back Guarantee" },
+      { "type": "text", "id": "announcement_bar_message_2", "label": "Message 2", "default": "⚡ Over 10,000 Happy UK Customers | Clinically Studied Technology" },
+      { "type": "text", "id": "announcement_bar_message_3", "label": "Message 3", "default": "🎁 Buy The Bundle & Save £174.98 | Limited Stock Available" },
+      { "type": "color", "id": "announcement_bar_bg", "label": "Background colour", "default": "#0A0A0A" },
+      { "type": "color", "id": "announcement_bar_text_color", "label": "Text colour", "default": "#F9F7F4" },
+      { "type": "url", "id": "announcement_bar_link", "label": "Link (optional)" }
     ]
   },
   {
-    "name": "Header",
+    "name": "Social Media",
     "settings": [
-      {
-        "type": "image_picker",
-        "id": "logo",
-        "label": "Logo image"
-      },
-      {
-        "type": "range",
-        "id": "logo_width",
-        "min": 50,
-        "max": 300,
-        "step": 10,
-        "unit": "px",
-        "label": "Logo width",
-        "default": 140
-      }
+      { "type": "text", "id": "instagram_url", "label": "Instagram URL", "default": "https://instagram.com/lumisca" },
+      { "type": "text", "id": "tiktok_url", "label": "TikTok URL", "default": "https://tiktok.com/@lumisca" },
+      { "type": "text", "id": "facebook_url", "label": "Facebook URL" },
+      { "type": "text", "id": "youtube_url", "label": "YouTube URL" }
     ]
   },
   {
-    "name": "Footer",
+    "name": "Tracking & Analytics",
     "settings": [
-      {
-        "type": "text",
-        "id": "footer_copyright",
-        "label": "Copyright text",
-        "default": "© 2026 Lumisca. All rights reserved."
-      }
+      { "type": "text", "id": "meta_pixel_id", "label": "Meta Pixel ID", "placeholder": "META_PIXEL_ID" },
+      { "type": "text", "id": "tiktok_pixel_id", "label": "TikTok Pixel ID", "placeholder": "TIKTOK_PIXEL_ID" },
+      { "type": "text", "id": "ga4_measurement_id", "label": "GA4 Measurement ID", "placeholder": "G-XXXXXXXXXX" },
+      { "type": "text", "id": "gtm_container_id", "label": "GTM Container ID", "placeholder": "GTM-XXXXXXX" },
+      { "type": "text", "id": "clarity_project_id", "label": "Microsoft Clarity Project ID", "placeholder": "CLARITY_PROJECT_ID" },
+      { "type": "text", "id": "klaviyo_public_api_key", "label": "Klaviyo Public API Key", "placeholder": "KLAVIYO_PUBLIC_API_KEY" }
     ]
   },
   {
-    "name": "Exit Intent Popup",
+    "name": "Popups",
     "settings": [
-      {
-        "type": "checkbox",
-        "id": "exit_popup_enabled",
-        "label": "Enable exit intent popup",
-        "default": true
-      },
-      {
-        "type": "text",
-        "id": "exit_popup_heading",
-        "label": "Popup heading",
-        "default": "Wait — Get 10% Off Your First Order"
-      },
-      {
-        "type": "text",
-        "id": "exit_popup_subtext",
-        "label": "Popup subtext",
-        "default": "Join thousands of UK customers on their light therapy journey. Enter your email for 10% off."
-      },
-      {
-        "type": "text",
-        "id": "exit_popup_discount_code",
-        "label": "Discount code",
-        "default": "LUMISCA10"
-      }
+      { "type": "checkbox", "id": "welcome_popup_enabled", "label": "Enable welcome popup", "default": true },
+      { "type": "text", "id": "welcome_popup_heading", "label": "Welcome popup heading", "default": "Get 10% Off Your First Order" },
+      { "type": "text", "id": "welcome_popup_subtext", "label": "Welcome popup subtext", "default": "Join 10,000+ UK customers. Enter your email below." },
+      { "type": "checkbox", "id": "exit_popup_enabled", "label": "Enable exit intent popup", "default": true },
+      { "type": "text", "id": "exit_popup_heading", "label": "Exit popup heading", "default": "Wait — Get 10% Off Your First Order" },
+      { "type": "text", "id": "exit_popup_subtext", "label": "Exit popup subtext", "default": "Join thousands of UK customers on their light therapy journey. Enter your email for 10% off." },
+      { "type": "text", "id": "exit_popup_discount_code", "label": "Discount code shown in popup", "default": "LUMISCA10" }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      { "type": "range", "id": "free_shipping_threshold", "label": "Free shipping threshold (pence)", "min": 0, "max": 20000, "step": 100, "default": 5000, "info": "Set in pence. 5000 = £50.00" },
+      { "type": "checkbox", "id": "cart_drawer_enabled", "label": "Enable cart drawer", "default": true },
+      { "type": "checkbox", "id": "cart_upsell_enabled", "label": "Enable cart upsell", "default": true }
+    ]
+  },
+  {
+    "name": "Trust Badges",
+    "settings": [
+      { "type": "text", "id": "trust_badge_1", "label": "Trust badge 1", "default": "Free UK Delivery" },
+      { "type": "text", "id": "trust_badge_2", "label": "Trust badge 2", "default": "60-Day Money Back" },
+      { "type": "text", "id": "trust_badge_3", "label": "Trust badge 3", "default": "Clinically Studied" },
+      { "type": "text", "id": "trust_badge_4", "label": "Trust badge 4", "default": "10,000+ Customers" }
+    ]
+  },
+  {
+    "name": "SEO",
+    "settings": [
+      { "type": "checkbox", "id": "meta_robots_noindex", "label": "Prevent search engines from indexing (noindex)", "default": false },
+      { "type": "text", "id": "seo_title_suffix", "label": "Title suffix", "default": "| Lumisca UK" }
     ]
   }
 ]

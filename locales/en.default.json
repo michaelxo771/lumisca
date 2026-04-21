@@ -1,36 +1,66 @@
 {
   "general": {
-    "password_page": {
-      "login_form_heading": "Enter store using password",
-      "login_form_password_label": "Password",
-      "login_form_password_placeholder": "Your password",
-      "login_form_submit": "Enter",
-      "admin_link_html": "Are you the store owner? <a href=\"/admin\" target=\"_blank\">Log in here</a>"
-    },
-    "meta": {
-      "tags": "Tagged with",
-      "types": "Types"
-    },
-    "breadcrumbs": {
-      "home": "Home"
-    },
+    "breadcrumb": { "home": "Home" },
+    "meta": { "tags": "Tagged with", "types": "Types" },
     "social": {
-      "links": {
-        "instagram": "Instagram",
-        "tiktok": "TikTok"
-      }
-    }
-  },
-  "sections": {
-    "header": {
-      "links": {
-        "cart_count": "Cart ({{ count }})"
-      }
+      "share_on_facebook": "Share on Facebook",
+      "share_on_twitter": "Share on Twitter",
+      "share_on_pinterest": "Pin it"
     },
-    "footer": {
-      "links": {
-        "title": "Quick Links"
-      }
+    "skip_content": "Skip to content"
+  },
+  "accessibility": {
+    "close": "Close",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "loading": "Loading",
+    "previous": "Previous",
+    "next": "Next",
+    "zoom_image": "Zoom image",
+    "cart_count": "Cart with {{ count }} items",
+    "wishlist_add": "Add to wishlist",
+    "wishlist_remove": "Remove from wishlist"
+  },
+  "header": {
+    "cart": "Cart",
+    "search": "Search",
+    "menu": "Menu",
+    "account": "Account",
+    "wishlist": "Wishlist"
+  },
+  "footer": {
+    "copyright": "© 2026 Lumisca. All rights reserved.",
+    "newsletter": {
+      "title": "Join The Lumisca Community",
+      "placeholder": "Your email address",
+      "button": "Subscribe",
+      "success": "Thank you for subscribing!",
+      "error": "Please enter a valid email address."
+    },
+    "payment_methods": "Payment methods accepted"
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "empty": "Your cart is currently empty.",
+      "continue_shopping": "Continue Shopping",
+      "subtotal": "Subtotal",
+      "taxes": "Taxes and shipping calculated at checkout",
+      "checkout": "Checkout — {{ total }}",
+      "update": "Update cart",
+      "remove": "Remove",
+      "view_cart": "View Cart",
+      "free_shipping_message": "You've unlocked free UK delivery!",
+      "free_shipping_progress": "Spend {{ amount }} more for free UK delivery"
+    },
+    "label": {
+      "quantity": "Quantity",
+      "price": "Price",
+      "total": "Total",
+      "product": "Product"
+    },
+    "drawer": {
+      "heading": "Your Cart ({{ count }})"
     }
   },
   "products": {
@@ -38,40 +68,145 @@
       "add_to_cart": "Add To Cart",
       "sold_out": "Sold Out",
       "unavailable": "Unavailable",
-      "quantity": {
-        "label": "Quantity"
-      },
-      "share": "Share"
+      "on_sale": "Sale",
+      "rrp": "RRP",
+      "save": "Save {{ amount }}",
+      "quantity": { "label": "Quantity", "increase": "Increase quantity", "decrease": "Decrease quantity" },
+      "share": "Share this product",
+      "description": "Description",
+      "details": "Details",
+      "shipping": "Shipping & Returns",
+      "reviews": "Reviews",
+      "from": "From {{ price }}",
+      "view_full_details": "View full details",
+      "choose_options": "Choose Options",
+      "preorder": "Pre-order",
+      "results_may_vary": "Individual results may vary."
     },
     "facets": {
       "clear_all": "Clear all",
-      "filters": "Filters"
+      "filter_by": "Filter by",
+      "sort_by": "Sort by",
+      "filters": "Filters",
+      "filter_and_sort": "Filter & Sort",
+      "showing_results": "Showing {{ count }} results for \"{{ search_terms }}\"",
+      "showing_results_with_count": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      }
     },
     "general": {
-      "sale_badge_html": "Sale",
-      "rrp_label": "RRP"
+      "sale_badge": "Sale",
+      "bestseller_badge": "Best Seller",
+      "new_badge": "New",
+      "bundle_badge": "Best Value",
+      "reviews_count": {
+        "one": "{{ count }} review",
+        "other": "{{ count }} reviews"
+      }
     }
   },
-  "cart": {
+  "collections": {
     "general": {
-      "title": "Your Cart",
-      "empty": "Your cart is currently empty.",
-      "continue_browsing_html": "<a href=\"/\">Continue browsing</a>",
-      "subtotal": "Subtotal",
-      "checkout": "Checkout",
-      "update": "Update cart",
-      "remove": "Remove"
+      "title": "All Products",
+      "empty": "No products found",
+      "empty_html": "Use fewer filters or <a href=\"{{ href }}\">remove all</a>",
+      "items_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
     }
   },
-  "accessibility": {
-    "skip_to_content": "Skip to content",
-    "close": "Close",
-    "open_menu": "Open menu",
-    "loading": "Loading"
+  "search": {
+    "general": {
+      "title": "Search",
+      "placeholder": "Search for products…",
+      "button": "Search",
+      "no_results_html": "Your search for \"{{ terms }}\" did not return any results.",
+      "results_with_count": {
+        "one": "{{ count }} result for \"{{ terms }}\"",
+        "other": "{{ count }} results for \"{{ terms }}\""
+      }
+    }
+  },
+  "pagination": {
+    "label": "Pagination",
+    "next": "Next",
+    "previous": "Previous",
+    "current_page": "Page {{ current }} of {{ total }}"
+  },
+  "account": {
+    "general": {
+      "title": "My Account",
+      "login": "Log in",
+      "logout": "Log out",
+      "register": "Create account",
+      "guest_title": "Guest",
+      "forgot_password": "Forgot password?",
+      "password_recover": "Reset your password",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Submit"
+    },
+    "orders": {
+      "title": "Order History",
+      "none": "You haven't placed any orders yet."
+    },
+    "addresses": {
+      "title": "Addresses",
+      "add": "Add a new address",
+      "default": "Default",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "save": "Save"
+    }
   },
   "blogs": {
+    "general": { "title": "Blog" },
     "article": {
-      "read_more": "Read more"
+      "read_more": "Read more",
+      "by_author": "By {{ author }}",
+      "posted_on": "Posted on {{ date }}"
+    }
+  },
+  "forms": {
+    "contact": {
+      "title": "Contact Us",
+      "name": "Full name",
+      "email": "Email address",
+      "order_number": "Order number (optional)",
+      "message": "Message",
+      "submit": "Send Message",
+      "success": "Thank you! We'll be in touch within 24 hours.",
+      "error": "There was an error sending your message. Please try again."
+    },
+    "newsletter": {
+      "placeholder": "Your email address",
+      "submit": "Subscribe",
+      "success": "Thank you for subscribing!",
+      "error": "Please enter a valid email address."
+    }
+  },
+  "password_page": {
+    "login_form_heading": "Enter store using password",
+    "login_form_password_label": "Password",
+    "login_form_password_placeholder": "Your password",
+    "login_form_submit": "Enter",
+    "admin_link_html": "Are you the store owner? <a href=\"/admin\" target=\"_blank\">Log in here</a>",
+    "coming_soon": "Coming Soon",
+    "subheading": "Lumisca is getting ready. Sign up to be notified when we launch.",
+    "notify_label": "Email address",
+    "notify_submit": "Notify Me"
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Your gift card",
+      "subtext": "Your gift card code is below — share it with someone special.",
+      "amount": "Gift card value: {{ amount }}",
+      "remaining_html": "Remaining balance: <strong>{{ balance }}</strong>",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "shop_link": "Start shopping"
     }
   }
 }
