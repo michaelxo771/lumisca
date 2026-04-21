@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "search-results": {
+      "type": "search-results",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": ["search-results", "footer"]
+}

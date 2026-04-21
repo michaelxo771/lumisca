@@ -1,0 +1,41 @@
+<section style="padding:80px 0;">
+  <div class="container">
+    <h1 style="margin-bottom:8px;">
+      {% if search.performed %}
+        {% if search.results_count == 0 %}
+          No results for &ldquo;{{ search.terms | escape }}&rdquo;
+        {% else %}
+          Results for &ldquo;{{ search.terms | escape }}&rdquo;
+        {% endif %}
+      {% else %}
+        Search
+      {% endif %}
+    </h1>
+
+    {% if search.performed and search.results_count > 0 %}
+      <p style="color:var(--color-grey-mid);margin-bottom:48px;">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %} found</p>
+      <div class="grid grid-4" style="gap:24px;">
+        {% for result in search.results %}
+          {% if result.object_type == 'product' %}
+            {% render 'product-card', product: result %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% elsif search.performed %}
+      <p style="color:var(--color-grey-mid);margin-bottom:48px;">Try a different search term or browse our collection.</p>
+      <a href="/collections/all" class="btn btn-primary">Shop All Products</a>
+    {% else %}
+      <form action="/search" method="get" style="max-width:500px;margin:48px 0;">
+        <div style="display:flex;gap:12px;">
+          <input type="hidden" name="type" value="product">
+          <input type="search" name="q" placeholder="Search products..." style="flex:1;padding:14px 20px;border:2px solid var(--color-grey-light);border-radius:8px;font-size:1rem;font-family:var(--font-body);outline:none;" value="{{ search.terms | escape }}">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{"name":"Search Results","settings":[]}
+{% endschema %}

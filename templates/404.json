@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "not-found": {
+      "type": "not-found",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": ["not-found", "footer"]
+}
