@@ -1,0 +1,60 @@
+<section style="padding:80px 0;">
+  <div class="container" style="max-width:900px;">
+    <h1 style="margin-bottom:24px;">We Believe Everyone Deserves Access To Clinic-Grade Light Therapy</h1>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:80px;">
+      <div data-animate>
+        <h2 style="margin-bottom:24px;">Our Story</h2>
+        <p style="margin-bottom:16px;">It started with a £150 bill. Our founder, struggling with thinning hair after years of stress, walked into a London light therapy clinic hoping for answers. The treatment worked — but the cost was eye-watering. £150 per session, three times a week, indefinitely.</p>
+        <p style="margin-bottom:16px;">After months of research into the published clinical science behind red and near-infrared light therapy, it became clear: the technology itself wasn't expensive. The clinic markup was.</p>
+        <p>So Lumisca was born. A mission to put professional-grade light therapy devices into the hands of everyday people across the UK — at a price that makes sense.</p>
+      </div>
+      <div data-animate>
+        {% if section.settings.brand_image != blank %}
+          {{ section.settings.brand_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Lumisca brand story', style: 'border-radius:16px;width:100%;height:400px;object-fit:cover;' }}
+        {% else %}
+          <div style="background:var(--color-grey-light);border-radius:16px;height:400px;display:flex;align-items:center;justify-content:center;">
+            <p style="color:var(--color-grey-mid);font-size:0.9rem;">Brand image placeholder</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:64px;background:var(--color-black);border-radius:24px;color:white;margin-bottom:80px;" data-animate>
+      <h2 style="color:white;margin-bottom:16px;">Our Mission</h2>
+      <p style="font-size:1.2rem;color:rgba(249,247,244,0.8);max-width:600px;margin:0 auto;">"To make clinically studied light therapy accessible to everyone in the UK — not just those who can afford a clinic."</p>
+    </div>
+
+    <div class="grid grid-3" style="margin-bottom:80px;">
+      <div style="text-align:center;padding:32px;" data-animate>
+        <div style="font-size:2.5rem;margin-bottom:16px;">🔬</div>
+        <h3 style="margin-bottom:12px;">Science-Backed</h3>
+        <p>Every Lumisca device uses wavelengths and technology that have been studied in peer-reviewed clinical research.</p>
+      </div>
+      <div style="text-align:center;padding:32px;" data-animate>
+        <div style="font-size:2.5rem;margin-bottom:16px;">💷</div>
+        <h3 style="margin-bottom:12px;">Accessible</h3>
+        <p>We believe effective light therapy shouldn't cost £150 a session. Our devices bring clinic-quality technology home.</p>
+      </div>
+      <div style="text-align:center;padding:32px;" data-animate>
+        <div style="font-size:2.5rem;margin-bottom:16px;">✅</div>
+        <h3 style="margin-bottom:12px;">Quality You Can Trust</h3>
+        <p>60-day money back guarantee on every product. If it doesn't work for you, we'll refund you in full. No questions.</p>
+      </div>
+    </div>
+
+    <div style="background:#f5f3f0;border-radius:16px;padding:48px;text-align:center;" data-animate>
+      <h2 style="margin-bottom:16px;">Our Promise To You</h2>
+      <p style="max-width:600px;margin:0 auto 32px;">Every Lumisca product comes with our 60-day money back guarantee. Use it daily for two months. If you don't see results you're happy with, contact us and we'll refund you completely — no forms, no fuss, no questions asked.</p>
+      <a href="/collections/all" class="btn btn-primary">Shop The Collection</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Page",
+  "settings": [
+    { "type": "image_picker", "id": "brand_image", "label": "Brand story image" }
+  ]
+}
+{% endschema %}
