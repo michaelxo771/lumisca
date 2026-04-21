@@ -1,13 +1,1 @@
-{
-  "sections": {
-    "search-results": {
-      "type": "search-results",
-      "settings": {}
-    },
-    "footer": {
-      "type": "footer",
-      "settings": {}
-    }
-  },
-  "order": ["search-results", "footer"]
-}
+{"sections":{"search-hero":{"type":"hero","settings":{"heading":"Search Results","subheading":"Find what you are looking for","badge":"🔍 Search","cta_text":"View All Products","cta_url":"/collections/all","cta2_text":"","cta2_url":""}},"featured-products":{"type":"featured-products","settings":{"heading":"Popular Products"}},"footer":{"type":"footer","settings":{}}},"order":["search-hero","featured-products","footer"]}
