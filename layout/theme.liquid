@@ -45,14 +45,14 @@
     <!-- CSS Variables injected from theme settings -->
     <style>
       :root {
-        --color-primary: {{ settings.color_primary | default: '#C8102E' }};
+        --color-red: {{ settings.color_primary | default: '#C8102E' }};
         --color-gold: {{ settings.color_gold | default: '#C9A84C' }};
-        --color-dark: {{ settings.color_dark | default: '#0A0A0A' }};
-        --color-light: {{ settings.color_light | default: '#F9F7F4' }};
-        --color-text: {{ settings.color_text | default: '#1A1A1A' }};
+        --color-black: {{ settings.color_dark | default: '#0A0A0A' }};
+        --color-white: {{ settings.color_light | default: '#F9F7F4' }};
+        --color-grey-mid: {{ settings.color_text | default: '#4A4A4A' }};
         --font-heading: 'Playfair Display', Georgia, serif;
         --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
-        --free-shipping-threshold: {{ settings.free_shipping_threshold | default: 50 }};
+        --free-shipping-threshold: {{ settings.free_shipping_threshold | default: 5000 }};
       }
     </style>
 
