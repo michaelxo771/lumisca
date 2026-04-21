@@ -1,0 +1,60 @@
+<section class="section">
+  <div class="container" style="max-width:800px;">
+    <h2 class="section-title" style="text-align:center;">{{ section.settings.heading }}</h2>
+    <div style="margin-top:48px;">
+      {% for block in section.blocks %}
+        <div class="faq__item" {{ block.shopify_attributes }}>
+          <button class="faq__question" aria-expanded="false">
+            {{ block.settings.question }}
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__answer" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease;">
+            <div style="padding:16px 0 24px;">
+              <p>{{ block.settings.answer }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if section.settings.cta_text != blank %}
+      <div style="text-align:center;margin-top:48px;">
+        <p style="margin-bottom:16px;color:var(--color-grey-mid);">Still have questions?</p>
+        <a href="{{ section.settings.cta_url | default: '/pages/contact' }}" class="btn btn-secondary">{{ section.settings.cta_text }}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Strip",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently Asked Questions" },
+    { "type": "text", "id": "cta_text", "label": "Bottom CTA text (optional)", "default": "Contact Us" },
+    { "type": "url", "id": "cta_url", "label": "Bottom CTA URL" }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Strip",
+      "blocks": [
+        { "type": "faq", "settings": { "question": "Is red light therapy safe?", "answer": "Yes. Red light therapy is a non-invasive, drug-free treatment that has been studied extensively. Our devices use clinically studied wavelengths that are safe for home use. Always follow the included instructions and avoid looking directly at the lights." } },
+        { "type": "faq", "settings": { "question": "How long before I see results?", "answer": "Most customers begin to notice changes from week 4 onwards with consistent daily use. Hair regrowth results typically become visible between weeks 8–12. Skin improvements are often noticed sooner, from week 4. Consistency is key." } },
+        { "type": "faq", "settings": { "question": "Can I use multiple Lumisca devices?", "answer": "Absolutely — many customers use multiple devices as part of their daily routine. The Complete Bundle is our most popular option as it covers hair, skin and sleep in one routine." } },
+        { "type": "faq", "settings": { "question": "What is your returns policy?", "answer": "We offer a 60-day money back guarantee on all Lumisca products. If you are not completely satisfied, simply contact us at support@lumisca.com and we will arrange a full refund — no questions asked." } },
+        { "type": "faq", "settings": { "question": "How long does UK delivery take?", "answer": "All UK orders are dispatched within 1–2 business days and delivered within 3–5 business days via tracked courier. You will receive a tracking link by email once your order has been dispatched." } },
+        { "type": "faq", "settings": { "question": "Is this suitable for sensitive skin?", "answer": "Yes. Our devices use light therapy only and do not come into contact with the skin directly. They are suitable for all skin types including sensitive skin. If you have a specific medical condition please consult your doctor before use." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
