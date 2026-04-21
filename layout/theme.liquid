@@ -1,170 +1,29 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0A0A0A">
-
-  {%- if page_description -%}
-    <meta name="description" content="{{ page_description | escape }}">
-  {%- endif -%}
-
-  {%- if settings.meta_robots_noindex -%}
-    <meta name="robots" content="noindex, nofollow">
-  {%- endif -%}
-
-  <link rel="canonical" href="{{ canonical_url }}">
-
-  {%- if settings.favicon != blank -%}
-    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-  {%- endif -%}
-
-  <title>
-    {{ page_title }}
-    {%- unless page_title contains shop.name %} — {{ shop.name }}{% endunless -%}
-  </title>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap">
-
-  <!-- Theme Styles -->
-  {{ 'lumisca.css' | asset_url | stylesheet_tag }}
-  {{ 'lumisca-conversion.css' | asset_url | stylesheet_tag }}
-
-  <!-- Theme Settings → CSS Variables -->
-  <style>
-    :root {
-      --red:   {{ settings.color_primary   | default: '#C8102E' }};
-      --gold:  {{ settings.color_gold      | default: '#C9A84C' }};
-      --black: {{ settings.color_dark      | default: '#0A0A0A' }};
-      --white: {{ settings.color_light     | default: '#F9F7F4' }};
-      --grey:  {{ settings.color_text      | default: '#4A4A4A' }};
-    }
-  </style>
-
-  <!-- GTM -->
-  {%- if settings.gtm_container_id != blank -%}
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ settings.gtm_container_id }}');</script>
-  {%- endif -%}
-
-  <!-- GA4 -->
-  {%- if settings.ga4_measurement_id != blank -%}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings.ga4_measurement_id }}"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ settings.ga4_measurement_id }}');</script>
-  {%- endif -%}
-
-  <!-- Microsoft Clarity -->
-  {%- if settings.clarity_project_id != blank -%}
-  <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","{{ settings.clarity_project_id }}");</script>
-  {%- endif -%}
-
-  <!-- Schema.org: Organisation -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "{{ shop.name }}",
-    "url": "{{ shop.url }}",
-    "contactPoint": { "@type": "ContactPoint", "email": "support@lumisca.com", "contactType": "customer service", "areaServed": "GB" }
-  }
-  </script>
-
-  {%- if request.page_type == 'product' -%}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "{{ product.title | escape }}",
-    "description": "{{ product.description | strip_html | truncate: 200 | escape }}",
-    "brand": { "@type": "Brand", "name": "Lumisca" },
-    "offers": {
-      "@type": "Offer",
-      "price": "{{ product.price | money_without_currency }}",
-      "priceCurrency": "GBP",
-      "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}"
-    }
-  }
-  </script>
-  {%- endif -%}
-
-  {{ content_for_header }}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ page_title }} | {{ shop.name }}</title>
+<meta name="description" content="{{ page_description | escape }}">
+<link rel="canonical" href="{{ canonical_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+{{ content_for_header }}
+{{ 'lumisca.css' | asset_url | stylesheet_tag }}
+{{ 'lumisca-conversion.css' | asset_url | stylesheet_tag }}
 </head>
-
-<body class="template-{{ request.page_type }}">
-
-  {%- if settings.gtm_container_id != blank -%}
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ settings.gtm_container_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  {%- endif -%}
-
-  <a class="skip-link" href="#MainContent">Skip to content</a>
-
-  {%- section 'announcement-bar' -%}
-  {%- section 'header' -%}
-
-  <main id="MainContent" tabindex="-1">
-    {{ content_for_layout }}
-  </main>
-
-  <!-- Cart Drawer (hidden by default via CSS) -->
-  {%- section 'cart-drawer' -%}
-  <div id="cart-overlay" class="cart-overlay" aria-hidden="true"></div>
-
-  <!-- Popups (hidden by default via CSS) -->
-  {%- section 'popup' -%}
-
-  <!-- Toast notifications -->
-  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
-
-  <!-- Back to top -->
-  <button id="back-to-top" class="back-to-top" aria-label="Back to top" style="display:none">↑</button>
-
-  <!-- Klaviyo -->
-  {%- if settings.klaviyo_public_api_key != blank -%}
-  <script async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_public_api_key }}"></script>
-  {%- endif -%}
-
-  <!-- Meta Pixel (deferred until cookie consent) -->
-  {%- if settings.meta_pixel_id != blank -%}
-  <script id="meta-pixel" type="text/plain" data-cookiecategory="marketing">
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','{{ settings.meta_pixel_id }}');fbq('track','PageView');
-  </script>
-  {%- endif -%}
-
-  <!-- TikTok Pixel (deferred until cookie consent) -->
-  {%- if settings.tiktok_pixel_id != blank -%}
-  <script id="tiktok-pixel" type="text/plain" data-cookiecategory="marketing">
-    !function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
-    ttq.load('{{ settings.tiktok_pixel_id }}');ttq.page();
-  }(window,document,'ttq');
-  </script>
-  {%- endif -%}
-
-  <!-- Theme JS -->
-  <script src="{{ 'lumisca.js' | asset_url }}" defer></script>
-  <script src="{{ 'lumisca-conversion.js' | asset_url }}" defer></script>
-
-  <!-- Boot data -->
-  <script>
-    window.Lumisca = {
-      cartCount: {{ cart.item_count }},
-      cartTotal: {{ cart.total_price }},
-      freeShippingThreshold: {{ settings.free_shipping_threshold | default: 5000 }},
-      currency: 'GBP',
-      shop: '{{ shop.permanent_domain }}',
-      routes: {
-        cart:       '{{ routes.cart_url }}',
-        cart_add:   '{{ routes.cart_add_url }}',
-        cart_change:'{{ routes.cart_change_url }}',
-        search:     '{{ routes.search_url }}'
-      },
-      exitPopup:    {{ settings.exit_popup_enabled   | default: true }},
-      welcomePopup: {{ settings.welcome_popup_enabled | default: true }},
-      discount:     '{{ settings.exit_popup_discount_code | default: "LUMISCA10" }}'
-    };
-  </script>
-
+<body>
+{% section 'announcement-bar' %}
+{% section 'header' %}
+<main id="main-content">{{ content_for_layout }}</main>
+{% render 'cart-drawer' %}
+{% render 'welcome-popup' %}
+{% render 'exit-popup' %}
+{% render 'cart-upsell-popup' %}
+{% render 'recent-purchase-toast' %}
+{% render 'cookie-consent' %}
+{{ 'lumisca.js' | asset_url | script_tag }}
+{{ 'lumisca-conversion.js' | asset_url | script_tag }}
 </body>
 </html>
