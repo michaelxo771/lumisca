@@ -1,0 +1,29 @@
+{% if settings.welcome_popup_enabled %}
+  {%- render 'welcome-popup' -%}
+{% endif %}
+
+{% if settings.exit_popup_enabled %}
+<div class="modal-overlay" id="exit-popup">
+  <div class="modal">
+    <button class="modal-close popup-close" data-popup-close aria-label="Close popup">×</button>
+    <div style="text-align:center;">
+      <div class="badge badge-red" style="margin-bottom:16px;">Don't Leave Empty Handed</div>
+      <h2>{{ settings.exit_popup_heading | default: 'Wait — Get 10% Off Your First Order' }}</h2>
+      <p style="margin:16px 0 24px;">{{ settings.exit_popup_subtext | default: 'Join thousands of UK customers on their light therapy journey. Enter your email for 10% off.' }}</p>
+      <form id="exit-form">
+        <input type="email" name="email" placeholder="Enter your email address" style="margin-bottom:12px;" required autocomplete="email">
+        <button type="submit" class="btn btn-primary btn-full">Claim My 10% Off</button>
+      </form>
+      <div id="exit-success" style="display:none;">
+        <p style="color:var(--color-gold);font-weight:600;margin-top:16px;">✓ Your code: <strong>{{ settings.exit_popup_discount_code | default: 'LUMISCA10' }}</strong></p>
+        <p style="font-size:0.85rem;opacity:0.7;margin-top:8px;">Use at checkout. Valid on your first order.</p>
+      </div>
+      <button class="popup-close" data-popup-close style="background:none;border:none;color:rgba(255,255,255,0.4);font-size:0.8rem;margin-top:16px;cursor:pointer;">No thanks, I'll pay full price</button>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{"name":"Popups","settings":[]}
+{% endschema %}
