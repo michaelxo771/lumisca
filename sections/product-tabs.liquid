@@ -1,0 +1,102 @@
+<section style="padding:60px 0;background:#f5f3f0;">
+  <div class="container">
+    <div class="tabs" id="product-tabs">
+      <div class="tabs__nav" style="display:flex;gap:0;border-bottom:2px solid var(--color-grey-light);margin-bottom:40px;overflow-x:auto;">
+        <button class="tabs__nav-btn is-active" data-tab="description" aria-selected="true" style="padding:14px 24px;background:none;border:none;border-bottom:2px solid var(--color-red);margin-bottom:-2px;font-family:var(--font-body);font-size:0.95rem;font-weight:600;cursor:pointer;white-space:nowrap;color:var(--color-red);">Description</button>
+        <button class="tabs__nav-btn" data-tab="how-to-use" aria-selected="false" style="padding:14px 24px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:var(--font-body);font-size:0.95rem;font-weight:600;cursor:pointer;white-space:nowrap;color:var(--color-grey-mid);">How To Use</button>
+        <button class="tabs__nav-btn" data-tab="in-the-box" aria-selected="false" style="padding:14px 24px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:var(--font-body);font-size:0.95rem;font-weight:600;cursor:pointer;white-space:nowrap;color:var(--color-grey-mid);">In The Box</button>
+        <button class="tabs__nav-btn" data-tab="specs" aria-selected="false" style="padding:14px 24px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:var(--font-body);font-size:0.95rem;font-weight:600;cursor:pointer;white-space:nowrap;color:var(--color-grey-mid);">Specs</button>
+        <button class="tabs__nav-btn" data-tab="shipping" aria-selected="false" style="padding:14px 24px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:var(--font-body);font-size:0.95rem;font-weight:600;cursor:pointer;white-space:nowrap;color:var(--color-grey-mid);">Shipping</button>
+      </div>
+
+      <div class="tabs__panel is-active" data-tab-panel="description">
+        <div style="max-width:700px;">{{ section.settings.description }}</div>
+      </div>
+
+      <div class="tabs__panel" data-tab-panel="how-to-use" style="display:none;">
+        {% for block in section.blocks %}
+          {% if block.type == 'step' %}
+            <div style="display:flex;gap:16px;margin-bottom:24px;align-items:start;" {{ block.shopify_attributes }}>
+              <div style="width:32px;height:32px;background:var(--color-red);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;flex-shrink:0;font-size:0.9rem;">{{ forloop.index }}</div>
+              <div>
+                <p style="font-weight:600;margin-bottom:4px;color:var(--color-black);">{{ block.settings.title }}</p>
+                <p style="color:var(--color-grey-mid);">{{ block.settings.description }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="tabs__panel" data-tab-panel="in-the-box" style="display:none;">
+        {% for block in section.blocks %}
+          {% if block.type == 'box_item' %}
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;" {{ block.shopify_attributes }}>
+              <span style="color:var(--color-red);font-size:1.2rem;font-weight:700;">✓</span>
+              <p style="font-weight:500;">{{ block.settings.item }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="tabs__panel" data-tab-panel="specs" style="display:none;">
+        <table style="width:100%;border-collapse:collapse;max-width:600px;">
+          {% for block in section.blocks %}
+            {% if block.type == 'spec' %}
+              <tr style="border-bottom:1px solid var(--color-grey-light);" {{ block.shopify_attributes }}>
+                <td style="padding:12px 0;font-weight:600;width:40%;color:var(--color-black);">{{ block.settings.label }}</td>
+                <td style="padding:12px 0;color:var(--color-grey-mid);">{{ block.settings.value }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </table>
+      </div>
+
+      <div class="tabs__panel" data-tab-panel="shipping" style="display:none;">
+        <div style="max-width:600px;">
+          <h3 style="margin-bottom:16px;">Shipping & Returns</h3>
+          <p style="margin-bottom:12px;">✅ <strong>Free UK delivery</strong> on all orders</p>
+          <p style="margin-bottom:12px;">📦 Dispatched within 1–2 business days</p>
+          <p style="margin-bottom:12px;">🚚 Delivered within 3–5 business days via tracked courier</p>
+          <p style="margin-bottom:12px;">📧 Tracking link sent by email once dispatched</p>
+          <p style="margin-bottom:24px;">🔄 <strong>60-day money back guarantee</strong> — not happy? We'll refund you in full, no questions asked</p>
+          <p style="font-size:0.85rem;color:var(--color-grey-mid);">Contact us at <a href="mailto:support@lumisca.com" style="color:var(--color-red);">support@lumisca.com</a> for any order queries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Tabs",
+  "settings": [
+    { "type": "richtext", "id": "description", "label": "Product description" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "How To Use Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Step title" },
+        { "type": "textarea", "id": "description", "label": "Step description" }
+      ]
+    },
+    {
+      "type": "box_item",
+      "name": "Box Item",
+      "settings": [
+        { "type": "text", "id": "item", "label": "Item name" }
+      ]
+    },
+    {
+      "type": "spec",
+      "name": "Specification",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Spec label" },
+        { "type": "text", "id": "value", "label": "Spec value" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Product Tabs" }]
+}
+{% endschema %}
